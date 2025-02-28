@@ -20,15 +20,13 @@ for file in probability_files:
     # Plot individual subfolder data
     plt.figure(figsize=(8, 6))
     for _, row in df.iterrows():
-        rat_id = row["Rat ID"]
         probabilities = row[1:].values  # Extract n=2 to n=6 probabilities
         x_values = list(range(2, 2 + len(probabilities)))
-        plt.plot(x_values, probabilities, marker='o', linestyle='-', label=f'Rat {rat_id}')
+        plt.plot(x_values, probabilities, marker='o', linestyle='-')
     
     plt.xlabel("n-state")
     plt.ylabel("Probability")
     plt.title(f"Probability Progression - {file}")
-    plt.legend()
     plt.grid()
     output_img_path = os.path.join(output_folder, file.replace(".csv", ".png"))
     plt.savefig(output_img_path)
@@ -40,15 +38,14 @@ for file in probability_files:
 # Combine all data for total plot
 total_df = pd.concat(total_data, axis=0)
 plt.figure(figsize=(10, 6))
-for rat_id, row in total_df.iterrows():
+for _, row in total_df.iterrows():
     probabilities = row.values
     x_values = list(range(2, 2 + len(probabilities)))
-    plt.plot(x_values, probabilities, marker='o', linestyle='-', label=f'Rat {rat_id}')
+    plt.plot(x_values, probabilities, marker='o', linestyle='-')
 
 plt.xlabel("n-state")
 plt.ylabel("Probability")
 plt.title("Overall Probability Progression")
-plt.legend()
 plt.grid()
 total_output_path = os.path.join(output_folder, "Total_Probability_Progression.png")
 plt.savefig(total_output_path)
