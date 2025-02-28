@@ -36,13 +36,13 @@ function build_and_export_cleaned_data()
             mkdir(fileOutDir);
         end
         
-        % 对当前文件中每只大鼠的数据进行处理
+        % deal with each rat
         for r = 1:length(ratNames)
-            rn = ratNames{r};  % 例如 'rat3'
-            % 初始化 cell 数组存放该 rat 的所有 session 数据
+            rn = ratNames{r};  %  'rat3'
+            
             sessions = {};
             
-            % 假设 cData.(rn) 为一个 struct 数组或 cell 数组，每个元素代表一个 session
+            
             sessionArray = cData.(rn);
             if iscell(sessionArray)
                 for s = 1:length(sessionArray)
@@ -56,7 +56,7 @@ function build_and_export_cleaned_data()
                 error('Unexpected type for cData.(%s): %s', rn, class(sessionArray));
             end
             
-            % 调用 concat_sessions 将多个 session 拼接为最终数据
+         
             try
                 [choice, trans, reward, new_sess] = concat_sessions(sessions);
             catch ME
@@ -64,10 +64,10 @@ function build_and_export_cleaned_data()
                 continue;
             end
             
-            % 生成 table 数据
+       
             T = table(choice, trans, reward, new_sess, 'VariableNames', {'Choice','Trans','Reward','NewSess'});
             
-            % 写出 CSV 文件，例如 "rat3_data.csv"
+          
             outFileName = sprintf('%s_data.csv', rn);
             outPath = fullfile(fileOutDir, outFileName);
             writetable(T, outPath);
@@ -78,21 +78,15 @@ function build_and_export_cleaned_data()
     fprintf('All data exported to folder "%s".\n', outDir);
 end
 
-% --- 内部函数: concat_sessions ---
+% --- : concat_sessions ---
 function [choice, trans, reward, new_sess] = concat_sessions(sections)
 % concat_sessions
 % ----------------
-% 将多个 session 的数据合并为长向量。
-% 每个 session 的数据存放在结构体中，必须包含字段 CTSR，其中：
-%    Column 1 为 Choice，
-%    Column 2 为 Trans，
-%    Column 4 为 Reward。
-% 同时，每个 session 的首个 trial 标记 new_sess 为 true，其余为 false.
-%
-% Input:
-%   sections - cell 数组，每个元素为一个 session 的数据
-% Output:
-%   choice, trans, reward, new_sess - 合并后的列向量
+
+%    Column 1  Choice，
+%    Column 2  Trans，
+%    Column 4  Reward。
+
 
     choice = [];
     trans = [];
@@ -101,7 +95,7 @@ function [choice, trans, reward, new_sess] = concat_sessions(sections)
     
     for s = 1:length(sections)
         sessionData = sections{s};
-        % 检查 sessionData 是否为结构体，不是则尝试取其第一个元素
+       
         if ~isstruct(sessionData)
             if iscell(sessionData) && ~isempty(sessionData) && isstruct(sessionData{1})
                 sessionData = sessionData{1};
@@ -115,7 +109,7 @@ function [choice, trans, reward, new_sess] = concat_sessions(sections)
         end
         
         CTSR = sessionData.CTSR;
-        % 按照要求：第1列为 Choice, 第2列为 Trans, 第4列为 Reward
+        
         choice = [choice; CTSR(:,1)];
         trans  = [trans;  CTSR(:,2)];
         reward = [reward; CTSR(:,4)];
