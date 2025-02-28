@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 output_folder = os.path.expanduser('~/Desktop/graph')
 
 # List all probability CSV files
-probability_files = [f for f in os.listdir(output_folder) if f.endswith("_probabilities.csv")]
+probability_files = [f for f in os.listdir(output_folder) if f.endswith("_probabilities.csv")]# change _pro can be the avg/_median/_iqr to out three 
 
 # Create a total results list for aggregated plotting
 total_data = []
