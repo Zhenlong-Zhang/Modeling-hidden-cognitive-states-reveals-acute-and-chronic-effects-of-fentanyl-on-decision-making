@@ -1,3 +1,5 @@
+% Written by Eric Garr (2025)
+
 load 4LR
 
 % need to re-order struct fields because of discrepency with ZZ
@@ -572,4 +574,5 @@ title('state 2 (female)')
 ax = gca;
 ax.FontSize = 10; 
 ylim([-3.2 3.2])
+
 
