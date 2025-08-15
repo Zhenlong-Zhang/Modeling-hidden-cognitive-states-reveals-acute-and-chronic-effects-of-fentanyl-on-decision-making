@@ -1,4 +1,4 @@
-% Written by Eric Garr
+% Written by Eric Garr (2025)
 
 load 4LR
 
@@ -708,3 +708,4 @@ title('state 1')
 ax = gca;
 
 ax.FontSize = 10; 
+
