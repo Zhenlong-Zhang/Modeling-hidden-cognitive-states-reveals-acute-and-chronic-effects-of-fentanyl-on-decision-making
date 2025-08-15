@@ -1,4 +1,4 @@
-% Written by Eric Garr
+% Written by Eric Garr (2025)
 
 %% fentanyl sessions
 
@@ -238,3 +238,4 @@ title('state 1')
 ax = gca;
 
 ax.FontSize = 10; 
+
