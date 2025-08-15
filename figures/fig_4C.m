@@ -1,6 +1,8 @@
+% Written by Eric Garr
+
 %% fentanyl sessions
 
-load gammas_3state
+load gammas_3state % contains state labels and gammas
 load 4LR
 
 % need to re-order struct fields because of discrepency with ZZ.
@@ -234,4 +236,5 @@ xlabel('training group')
 ylabel('b coefficient')
 title('state 1')
 ax = gca;
+
 ax.FontSize = 10; 
