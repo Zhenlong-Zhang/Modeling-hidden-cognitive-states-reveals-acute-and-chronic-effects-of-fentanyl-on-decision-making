@@ -1,3 +1,5 @@
+% Written by Eric Garr
+
 load 4LR
 
 % need to re-order struct fields because of discrepency with ZZ.
@@ -704,4 +706,5 @@ xlabel('training group')
 ylabel('MB weight')
 title('state 1')
 ax = gca;
+
 ax.FontSize = 10; 
