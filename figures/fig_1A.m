@@ -1,3 +1,5 @@
+% Written by Eric Garr (2025)
+
 load 4LR
 
 cohorts = 9;
@@ -85,4 +87,5 @@ yline(68.57,'--')
 ax = gca;
 ax.FontSize = 10; 
 ax.XColor = 'black';
+
 ax.YColor = 'black';
