@@ -9,8 +9,10 @@ MoA-HMM jointly infers latent states and agent weights while supporting 5 agents
 
 ## Quick start
 ### Clone and set paths
-...
-
+```
+git clone https://github.com/Zhenlong-Zhang/MOA-HMM.git
+cd MOA-HMM
+```
 ### Prepare data (CSV per subject)
 Each subject’s CSV must have the following columns:
 
@@ -22,15 +24,16 @@ Each subject’s CSV must have the following columns:
 | NewSess  | 1 = start of new session, 0 = continuation    |
 
 **Example directory structure:**
+```
 data-cleaned/
 ├── group1/
-│ ├── rat1.csv
-│ ├── rat2.csv
-│ └── ...
-├── group2/
-│ ├── rat3.csv
-│ └── ...
-
+│   ├── rat1.csv
+│   ├── rat2.csv
+│   └── ...
+└── group2/
+    ├── rat3.csv
+    └── ...
+```
 ## Citation
 Zhang, Z., Janak, P. H., & Garr, E. (2025). *Modeling hidden cognitive states reveals acute and chronic effects of fentanyl on decision-making*. bioRxiv. https://doi.org/10.1101/2025.08.04.668448
 
